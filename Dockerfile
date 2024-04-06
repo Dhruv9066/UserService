@@ -4,6 +4,6 @@ WORKDIR /app
 
 EXPOSE 8080
 
-COPY target/*.jar /app
+COPY target/userservice-0.0.1-SNAPSHOT.jar.jar /app
 
-CMD ["java", "-jar", "*.jar"]
+CMD ["java", "-jar", "userservice-0.0.1-SNAPSHOT.jar"]
