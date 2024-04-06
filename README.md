@@ -10,5 +10,4 @@
 
 @DeleteMapping("/user/{id}") = To delete user by ID
 
-@PutMapping("/user/{id}") = To update the user
-
+@PutMapping("/user/{id}") = To update the user 
