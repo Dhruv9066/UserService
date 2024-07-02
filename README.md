@@ -1,4 +1,4 @@
-# Sept23Bootcamp
+# Sept23Boot
 
 **Endpoints are **
 
