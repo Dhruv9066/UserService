@@ -5,10 +5,12 @@ on:
     workflows: ["ci-pipeline"]
     types:
       - completed
-
 env:
   DOCKERHUB_USERNAME: dhruv3020
   DOCKER_IMAGE: action
+
+permissions:
+  contents: write
 
 jobs:
   CD_Deploy:
