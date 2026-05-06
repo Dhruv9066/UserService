@@ -28,7 +28,7 @@ jobs:
 
           echo "Updating image to $DOCKERHUB_USERNAME/$DOCKER_IMAGE:$GITHUB_SHA"
 
-          sed -i "s|dhruv3020/action:.*|image: $DOCKERHUB_USERNAME/$DOCKER_IMAGE:$GITHUB_SHA|g" deployment.yaml
+          sed -i "s|image: dhruv3020/action:.*|image: dhruv3020/action:$GITHUB_SHA|g" deployment.yaml
 
           git add deployment.yaml
           git commit -m "Update image tag to $GITHUB_SHA" || echo "No changes"
