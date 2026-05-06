@@ -51,12 +51,12 @@ jobs:
 
       - name: building the image
         run: |
-          docker build -t ${{env.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE}}:${{ github.sha }} .
+          docker build -t $DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: '${{env.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE}}:${{ github.sha }}'
+          image-ref: '$DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -71,4 +71,4 @@ jobs:
 
       - name: publishing the image to dockerhub
         run: | 
-          docker push ${{vars.DOCKERHUB_USERNAME}}/${{vars.DOCKER_IMAGE}}:${{ github.sha }}
+          docker push $DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }}
