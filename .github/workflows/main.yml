@@ -42,8 +42,7 @@ jobs:
           path: '.'
           format: 'HTML'
           out: 'reports'
-
-          
+  
       - name: uploading the artifact
         uses: actions/upload-artifact@v7
         with:
@@ -52,13 +51,12 @@ jobs:
 
       - name: building the image
         run: |
-          docker build -t ${{vars.DOCKERHUB_USERNAME}}/${{vars.DOCKER_IMAGE}}:${{ github.sha }} .
-
+          docker build -t ${{env.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE}}:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: '${{vars.DOCKERHUB_USERNAME}}/${{vars.DOCKER_IMAGE}}:${{ github.sha }}'
+          image-ref: '${{env.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE}}:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
