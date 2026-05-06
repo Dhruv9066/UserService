@@ -5,7 +5,7 @@ jobs:
   CI_Integration:
     runs-on: ubuntu-latest
     steps:
-      
+
       - name: Git checkout stage
         uses: actions/checkout@v4
 
@@ -15,5 +15,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: checking maven version
-        run: mvn --version
+      - name: running the build
+        run: mvn clean package
+
+      - name: listing the war
+        run: ls -lR
