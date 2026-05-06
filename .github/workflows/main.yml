@@ -31,7 +31,7 @@ jobs:
       - name: running the OWASP dependency check
         uses: dependency-check/Dependency-Check_Action@main
         env: 
-          JAVA_HOME: /opt/jdk
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.18-8/x64
         with:
           project: 'userservice'
           path: '.'
