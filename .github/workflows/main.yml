@@ -28,15 +28,18 @@ jobs:
 
       - name: running the OWASP dependency check
         uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
+        env: 
+          JAVA_HOME: /opt/jdk
         with:
           project: 'userservice'
           path: '.'
           format: 'HTML'
           out: 'reports'
+
           
       - name: uploading the artifact
         uses: actions/upload-artifact@v7
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
+
