@@ -59,12 +59,12 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: "$DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }}"
-          format: 'table'
+          image-ref: ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          format: table
           exit-code: '1'
           ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL'
+          vuln-type: os,library
+          severity: CRITICAL
 
       - name: login to Docker Hub
         uses: docker/login-action@v4
