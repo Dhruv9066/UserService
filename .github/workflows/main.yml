@@ -49,6 +49,9 @@ jobs:
            name: Depcheck report
            path: ${{github.workspace}}/reports
 
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v5
+
       - name: building the image
         run: |
           docker build -t $DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }} .
