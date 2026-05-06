@@ -1,19 +1,1 @@
-name: ci-pipeline
-on: 
-- push 
-jobs:
-  CI_Integration:
-    run-on: ubuntu-latest
-  
-  steps: 
-  - name: Git checkout stage
-    uses: checkout@v6
 
-  - name: Setting up java
-    uses: actions/setup-java@v4
-    with:
-      java-version: '17'
-      distribution: 'temurin'
-  
-  - name: checking maven version
-    run: mvn --version
