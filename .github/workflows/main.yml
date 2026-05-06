@@ -14,6 +14,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: listing the JAVA home
+        run: echo $JAVA_HOME
 
       - name: running the build
         run: mvn clean package
@@ -22,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: userservice
-          path: .target/userservice-0.0.1-SNAPSHOT.jar
+          path: target/userservice-0.0.1-SNAPSHOT.jar
 
       # https://github.com/marketplace/actions/dependency-check
 
