@@ -1,0 +1,33 @@
+name: cd_pipeline
+
+on:
+  workflow_run:
+    workflows: [ci_pipeline]
+    types:
+      - completed
+
+env:
+  DOCKERHUB_USERNAME: dhruv3020
+  DOCKER_IMAGE: action
+
+jobs:
+  CD_Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        run: |
+          rm -rf github_action_k8
+          git clone https://github.com/Dhruv9066/github_action_k8.git
+          cd github_action_k8
+
+          git config user.email "github_action@example.com"
+          git config user.name "github_action"
+
+          echo "Updating image to $DOCKERHUB_USERNAME/$DOCKER_IMAGE:$GITHUB_SHA"
+
+          sed -i "s|dhruv3020/action:.*|image: $DOCKERHUB_USERNAME/$DOCKER_IMAGE:$GITHUB_SHA|g" deployment.yaml
+
+          git add deployment.yaml
+          git commit -m "Update image tag to $GITHUB_SHA" || echo "No changes"
+          git push https://dhruv9066:${{secrets.TOKEN_GITHUB}}@github.com/Dhruv9066/github_action_k8.git HEAD:main
