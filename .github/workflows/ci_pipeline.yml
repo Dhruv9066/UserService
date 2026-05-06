@@ -1,6 +1,7 @@
 name: ci-pipeline
 on:
   - push
+  - workflow_dispatch
 
 env:
   DOCKERHUB_USERNAME: dhruv3020
