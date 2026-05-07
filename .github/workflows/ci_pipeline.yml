@@ -55,7 +55,7 @@ jobs:
 
       - name: building the image
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }} .
+          docker build --platform linux/amd64 -t $DOCKERHUB_USERNAME/$DOCKER_IMAGE:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
